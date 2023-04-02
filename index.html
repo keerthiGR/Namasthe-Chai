@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ArrayChallenge(arr) {
+  // Step 1
+  const sum = arr.reduce((acc, curr) => acc + curr, 0);
+  if (sum % 2 !== 0) {
+    return -1;
+  }
+
+  // Step 2
+  arr.sort((a, b) => a - b);
+
+  // Step 3
+  const set1 = [];
+  const set2 = [];
+
+  // Step 4
+  for (const num of arr) {
+    // Step 5
+    if (set1.reduce((acc, curr) => acc + curr, 0) + num % 2 === 0) {
+      set1.push(num);
+    } else {
+      set2.push(num);
+    }
+  }
+
+  // Step 6
+  if (set1.reduce((acc, curr) => acc + curr, 0) === set2.reduce((acc, curr) => acc + curr, 0)) {
+    return set1.join(",") + "," + set2.join(",");
+  }
+
+  // Step 7
+  return -1;
+}
+
+console.log(ArrayChallenge([16, 22, 35, 8, 20, 1, 21, 11])); 
+    </script>
+</body>
+</html>
